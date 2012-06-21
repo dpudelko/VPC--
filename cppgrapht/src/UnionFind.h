@@ -1,53 +1,17 @@
-/*
- * UnionFind.h
- *
- *  Created on: 21.06.2012
- *      Author: Daniel Weber
- */
-
 #ifndef UNIONFIND_H_
 #define UNIONFIND_H_
 
-/* ==========================================
- * JGraphT : a free Java graph-theory library
- * ==========================================
- *
- * Project Info:  http://jgrapht.sourceforge.net/
- * Project Creator:  Barak Naveh (http://sourceforge.net/users/barak_naveh)
- *
- * (C) Copyright 2003-2010, by Barak Naveh and Contributors.
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc.,
- * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
- */
-/* -------------------------
- * UnionFind.java
- * -------------------------
- * (C) Copyright 2010-2010, by Tom Conerly and Contributors.
- *
- * Original Author:  Tom Conerly
- * Contributor(s):
- *
- * Changes
- * -------
- * 02-Feb-2010 : Initial revision (TC);
- *
- */
-package org.jgrapht.alg.util;
-
-import java.util.*;
+#include <map>
+#include <set>
+#include <stdexcept>
+#include <typeinfo>
+#include <AbstractGraph.h>
+#include <EdgeFactory.h>
+#include <EdgeSetFactory.h>
+#include <Graphs.h>
+#include <IntrusiveEdge.h>
+#include <UndirectedGraph.h>
+#include <WeightedGraph.h>
 
 
 /**
@@ -60,15 +24,17 @@ import java.util.*;
  * Ackermann function. UnionFind uses the hashCode and equals method of the
  * elements it operates on.
  *
- * @author Tom Conerly
- * @since Feb 10, 2010
+ * @author Daniel Weber
+ * @since 2012-06-21
  */
-public class UnionFind<T>
+template <class T>
+class UnionFind
 {
     //~ Instance fields --------------------------------------------------------
 
-    private Map<T, T> parentMap;
-    private Map<T, Integer> rankMap;
+private:
+	set<T*, T*>* parentMap;
+    set<T*, int*>* rankMap;
 
     //~ Constructors -----------------------------------------------------------
 
@@ -76,13 +42,12 @@ public class UnionFind<T>
      * Creates a UnionFind instance with all of the elements of elements in
      * seperate sets.
      */
-    public UnionFind(Set<T> elements)
+public:
+    UnionFind(set<T*>* elements)
     {
-        parentMap = new HashMap<T, T>();
-        rankMap = new HashMap<T, Integer>();
-        for (T element : elements) {
-            parentMap.put(element, element);
-            rankMap.put(element, 0);
+        for (T* element : elements) {
+            parentMap->put(element, element);
+            rankMap->put(element, 0);
         }
     }
 
@@ -93,16 +58,16 @@ public class UnionFind<T>
      *
      * @param element The element to add.
      */
-    public void addElement(T element)
+    void addElement(T* element)
     {
-        parentMap.put(element, element);
-        rankMap.put(element, 0);
+        parentMap->put(element, element);
+        rankMap->put(element, 0);
     }
 
     /**
      * @return map from element to parent element
      */
-    protected Map<T, T> getParentMap()
+    map<T*, T*>* getParentMap()
     {
         return parentMap;
     }
@@ -110,7 +75,7 @@ public class UnionFind<T>
     /**
      * @return map from element to rank
      */
-    protected Map<T, Integer> getRankMap()
+    map<T*, int*>* getRankMap()
     {
         return rankMap;
     }
@@ -122,60 +87,59 @@ public class UnionFind<T>
      *
      * @return The element representing the set the element is in.
      */
-    public T find(T element)
+     T* find(T* element)
     {
-        if (!parentMap.containsKey(element)) {
+        if (!parentMap->containsKey(element)) {
             throw new IllegalArgumentException(
                 "elements must be contained in given set");
         }
 
-        T parent = parentMap.get(element);
-        if (parent.equals(element)) {
+        T* parent = parentMap->get(element);
+        if (parent->equals(element)) {
             return element;
         }
 
-        T newParent = find(parent);
-        parentMap.put(element, newParent);
+        T* newParent = find(parent);
+        parentMap->put(element, newParent);
         return newParent;
     }
 
     /**
      * Merges the sets which contain element1 and element2.
      *
-     * @param element1 The first element to union.
-     * @param element2 The second element to union.
+     * @param element1 The first element to unionC.
+     * @param element2 The second element to unionC.
      */
-    public void unionC(T element1, T element2)
+    void unionC(T* element1, T* element2)
     {
-        if (!parentMap.containsKey(element1)
-            || !parentMap.containsKey(element2))
+        if (!parentMap->containsKey(element1)
+            || !parentMap->containsKey(element2))
         {
             throw new IllegalArgumentException(
                 "elements must be contained in given set");
         }
 
-        T parent1 = find(element1);
-        T parent2 = find(element2);
+        T* parent1 = find(element1);
+        T* parent2 = find(element2);
 
         //check if the elements are already in the same set
-        if (parent1.equals(parent2)) {
+        if (parent1->equals(parent2)) {
             return;
         }
 
-        int rank1 = rankMap.get(parent1);
-        int rank2 = rankMap.get(parent2);
+        int rank1 = rankMap->get(parent1);
+        int rank2 = rankMap->get(parent2);
         if (rank1 > rank2) {
-            parentMap.put(parent2, parent1);
+            parentMap->put(parent2, parent1);
         } else if (rank1 < rank2) {
-            parentMap.put(parent1, parent2);
+            parentMap->put(parent1, parent2);
         } else {
-            parentMap.put(parent2, parent1);
-            rankMap.put(parent1, rank1 + 1);
+            parentMap->put(parent2, parent1);
+            rankMap->put(parent1, rank1 + 1);
         }
     }
-}
+};
 
-// End UnionFind.java
 
 
 
