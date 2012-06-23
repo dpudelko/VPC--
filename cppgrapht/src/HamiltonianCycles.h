@@ -8,6 +8,9 @@
 #ifndef HAMILTONIANCYCLES_H_
 #define HAMILTONIANCYCLES_H_
 
+#include <list>
+#include "Graphs.h"
+
 /* ==========================================
  * JGraphT : a free Java graph-theory library
  * ==========================================
@@ -81,24 +84,25 @@ class HamiltonianCycle
      * @return The optimal tour as a list of vertices.
      */
 public:
-   static <V, E> List<V> getApproximateOptimalForCompleteGraph(SimpleWeightedGraph<V, E> g)
+   static list<V> getApproximateOptimalForCompleteGraph(Graphs<V, E> g)
     {
-        List<V> vertices = new LinkedList<V>(g.vertexSet());
+        list<V> vertices = new list<V>(g.vertexSet());
 
         // If the graph is not complete then return null since this algorithm
         // requires the graph be complete
         if ((vertices.size() * (vertices.size() - 1) / 2)
             != g.edgeSet().size())
         {
-            return null;
+        	// TODO Überprüfen, vorher return null;
+            return 0;
         }
 
-        List<V> tour = new LinkedList<V>();
+        list<V> tour = new list<V>();
 
         // Each iteration a new vertex will be added to the tour until all
         // vertices have been added
         while (tour.size() != g.vertexSet().size()) {
-            boolean firstEdge = true;
+            bool firstEdge = true;
             double minEdgeValue = 0;
             int minVertexFound = 0;
             int vertexConnectedTo = 0;
@@ -123,7 +127,7 @@ public:
         }
         return tour;
     }
-}
+};
 
 // End HamiltonianCycle.h
 

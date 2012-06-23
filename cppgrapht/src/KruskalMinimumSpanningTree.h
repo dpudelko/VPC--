@@ -7,14 +7,14 @@
 #include <typeinfo>
 #include <stdexcept>
 #include <algorithm>
-#include <AbstractGraph.h>
-#include <EdgeFactory.h>
-#include <EdgeSetFactory.h>
-#include <Graphs.h>						// memo fuer mittwochBei uns heißt die headder Graph.h ohne s!!-->???? mit s gibts auch! welche?
-#include <IntrusiveEdge.h>
-#include <UndirectedGraph.h>
-#include <WeightedGraph.h>
-#include <UnionFind.h>
+#include "AbstractGraph.h"
+#include "EdgeFactory.h"
+#include "EdgeSetFactory.h"
+#include "Graphs.h"						// memo fuer mittwochBei uns heißt die headder Graph.h ohne s!!-->???? mit s gibts auch! welche?
+#include "IntrusiveEdge.h"
+#include "UndirectedGraph.h"
+#include "WeightedGraph.h"
+#include "UnionFind.h"
 
 
 

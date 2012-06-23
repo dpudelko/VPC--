@@ -90,8 +90,7 @@ public:
      T* find(T* element)
     {
         if (!parentMap->containsKey(element)) {
-            throw new IllegalArgumentException(
-                "elements must be contained in given set");
+            // TODO Exception
         }
 
         T* parent = parentMap->get(element);
@@ -115,8 +114,7 @@ public:
         if (!parentMap->containsKey(element1)
             || !parentMap->containsKey(element2))
         {
-            throw new IllegalArgumentException(
-                "elements must be contained in given set");
+           // TODO Exception
         }
 
         T* parent1 = find(element1);
