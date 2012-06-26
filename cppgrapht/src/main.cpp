@@ -53,10 +53,10 @@ int main()
 		cout << e.what();
 	}
 
-<<<<<<< HEAD
+
 	cout << "End.";
-=======
+
 	cout << "\nEnd";
->>>>>>> Fixes
+
 	return 0;
 }
