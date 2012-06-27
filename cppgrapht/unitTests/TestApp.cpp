@@ -2,23 +2,36 @@
 #include <cppunit/CompilerOutputter.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/ui/text/TestRunner.h>
-#include "AbstractBaseGraphTest.hpp"
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestResult.h>
 #include <cppunit/TestResultCollector.h>
 #include <cppunit/TextTestProgressListener.h>
 
-
+#include "AbstractBaseGraphTest.hpp"
 
 int mainz()//int argc, char* argv[] waren parameter im original
 {
+	CppUnit::TestCaller<AbstractBaseGraphTest> test( "testKonstruktor",
+	                                             &AbstractBaseGraphTest::testKonstruktor );
 
+	CppUnit::TextUi::TestRunner runner;
+	runner.addTest(AbstractBaseGraphTest::suite());
+
+	runner.run();
+
+
+
+
+
+return 0;
+#if 0
 	CppUnit::TextUi::TestRunner runner;
 	CppUnit::TestFactoryRegistry &registry = CppUnit::TestFactoryRegistry::getRegistry();
 	runner.addTest( registry.makeTest() );
 	runner.run();
-	return 0;
 
+	return 0;
+#endif
 
 
 #if 0
