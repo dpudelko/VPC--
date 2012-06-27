@@ -74,7 +74,7 @@ class EulerianCircuit
      * @return true for Eulerian and false for non-Eulerian
      */
 public:
-	static bool isEulerian(Graphs<V, E> g)
+	static bool isEulerian(Graph<V, E> g)
     {
         // If the graph is not connected, then no Eulerian circuit exists
         /*if (!(new ConnectivityInspector<V, E>(g)).isGraphConnected()) {
@@ -83,12 +83,15 @@ public:
 
         // A graph is Eulerian if and only if all vertices have even degree
         // So, this code will check for that
-        Iterator<V> iter = g.vertexSet().iterator();
-        while (iter.hasNext()) {
-            V v = iter.next();
+		set<V> vertices = g.vertexSet();
+		typename set<V>::iterator it;
+        it = vertices.begin();
+        while (it != vertices.end()) {
+            V v = *it;
             if ((g.degreeOf(v) % 2) == 1) {
                 return false;
             }
+            it++;
         }
         return true;
     }
@@ -108,7 +111,7 @@ public:
         // If the graph is not Eulerian then just return a null since no
         // Eulerian circuit exists
         if (!isEulerian(g)) {
-            return null;
+            return 0;
         }
 
         // The circuit will be represented by a linked list
@@ -120,13 +123,15 @@ public:
         // arbitrary circuit, then it will find another arbitrary circuit until
         // every edge has been traversed
         while (sg.edgeSet().size() > 0) {
-            V v = null;
+            V v = 0;
 
             // Find a vertex which has an edge that hasn't been traversed yet,
             // and keep its index position in the circuit list
             int index = 0;
-            for (Iterator<V> iter = path.iterator(); iter.hasNext(); index++) {
-                v = iter.next();
+
+            set<V>::iterator it;
+            for (it = path.begin(); it != path.end(); it++) {
+                v = *it;
                 if (sg.degreeOf(v) > 0) {
                     break;
                 }
@@ -134,12 +139,11 @@ public:
 
             // Finds an arbitrary circuit of the current vertex and
             // appends this into the circuit list
+            set<V>::iterator iter;
             while (sg.degreeOf(v) > 0) {
-                for (
-                    Iterator<V> iter = sg.vertexSet().iterator();
-                    iter.hasNext();)
+                for (iter = sg.vertexSet().begin(); iter != sg.vertexSet().end(); it++)
                 {
-                    V temp = iter.next();
+                    V temp = *it;
                     if (sg.containsEdge(v, temp)) {
                         path.add(index, temp);
                         sg.removeEdge(v, temp);
