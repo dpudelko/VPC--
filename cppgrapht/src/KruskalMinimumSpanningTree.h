@@ -50,10 +50,12 @@ private:
      * @param graph the graph to be searched
      */
 public:
-    KruskalMinimumSpanningTree(Graph graph)
+    KruskalMinimumSpanningTree(Graph<V, E> graph)
     {
         UnionFind<V> forest = new UnionFind<V>(graph->vertexSet());
         set<E*>* allEdges = graph->edgeSet();
+
+        // Sortiermethode raussuchen
         sort(allEdges->begin(),allEdges->end());[](E edge1, E edge2)->bool{
 
         	return graph->getEdgeWeight(edge1)<graph->getEdgeWeight(edge2);
@@ -63,16 +65,21 @@ public:
         spanningTreeCost = 0;
         set<E*>* edgeList;
 
-        for (E edge : allEdges) {
-            V source = graph->getEdgeSource(edge);
-            V target = graph->getEdgeTarget(edge);
-            if (forest->find(source)->equals(forest->find(target))) {
-                continue;
-            }
 
-            forest->unionC(source, target);
-            edgeList->add(edge);
-            spanningTreeCost += graph.getEdgeWeight(edge);
+        // TODO ggf. Šndern in set<E*>
+        typename set<E>::iterator it;
+
+        for(it = allEdges->begin(); it != allEdges->end(); it++) {
+        	E edge = *it;
+        	V source = graph->getEdgeSource(edge);
+			V target = graph->getEdgeTarget(edge);
+			if (forest->find(source)->equals(forest->find(target))) {
+				continue;
+			}
+
+			forest->unionC(source, target);
+			edgeList->add(edge);
+			spanningTreeCost += graph.getEdgeWeight(edge);
         }
     }
 

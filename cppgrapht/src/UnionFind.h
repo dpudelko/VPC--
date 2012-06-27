@@ -45,7 +45,9 @@ private:
 public:
     UnionFind(set<T*>* elements)
     {
-        for (T* element : elements) {
+    	typename set<T>::iterator it;
+        for (it = elements->begin(); it != elements->end(); it++) {
+        	T element = *it;
             parentMap->put(element, element);
             rankMap->put(element, 0);
         }

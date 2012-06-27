@@ -21,6 +21,8 @@
 #include "UndirectedGraph.h"
 #include "VertexFactory.h"
 #include "WeightedGraph.h"
+#include "KruskalMinimumSpanningTree.h"
+#include "UnionFind.h"
 
 //test
 using namespace std;
@@ -52,9 +54,6 @@ int main()
 	} catch (invalid_argument &e) {
 		cout << e.what();
 	}
-
-
-	cout << "End.";
 
 	cout << "\nEnd";
 

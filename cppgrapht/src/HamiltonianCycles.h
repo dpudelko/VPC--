@@ -9,7 +9,7 @@
 #define HAMILTONIANCYCLES_H_
 
 #include <list>
-#include "Graphs.h"
+#include "Graph.h"
 
 /* ==========================================
  * JGraphT : a free Java graph-theory library
@@ -84,7 +84,7 @@ class HamiltonianCycle
      * @return The optimal tour as a list of vertices.
      */
 public:
-   static list<V> getApproximateOptimalForCompleteGraph(Graphs<V, E> g)
+   static list<V> getApproximateOptimalForCompleteGraph(Graph<V, E> g)
     {
         list<V> vertices = new list<V>(g.vertexSet());
 
