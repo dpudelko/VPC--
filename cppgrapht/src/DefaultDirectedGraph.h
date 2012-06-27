@@ -49,7 +49,7 @@ public: DefaultDirectedGraph(E* edgeClass)
      * @param ef the edge factory of the new graph.
      */
 
-//Standard-konstructor of the Upperclass is called
+	//Standard-konstructor of the Upperclass is called
 	DefaultDirectedGraph(EdgeFactory<V, E>* ef) : AbstractBaseGraph<V, E>(ef, false, true, true){}
 
 

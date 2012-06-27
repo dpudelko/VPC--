@@ -47,10 +47,16 @@ int main()
 		const set<DefaultEdge<int>* >* es = g->edgeSet();
 		cout << "Num Vertices: " << vs->size() << "\n";
 		cout << "Num Edges: " << es->size() << "\n";
+		cout << "Contains: " << g->getAllEdges(&v1, &v2) << "\n\n";
+
 	} catch (invalid_argument &e) {
 		cout << e.what();
 	}
 
-	cout << "Yo.";
+
+	cout << "End.";
+
+	cout << "\nEnd";
+
 	return 0;
 }
