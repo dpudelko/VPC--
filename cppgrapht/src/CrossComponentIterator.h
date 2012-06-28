@@ -308,7 +308,8 @@ protected:
 public:
     static Specifics<V, E> createGraphSpecifics(Graph<V, E> g)
     {
-        if (g instanceof DirectedGraph<?, ?>) {
+    	DirectedSpecifics<V, E>* v = dynamic_cast<DirectedSpecifics<V, E>*>(g);
+    	if(v != 0){
             return new DirectedSpecifics<V, E>((DirectedGraph<V, E>) g);
         } else {
             return new UndirectedSpecifics<V, E>(g);
