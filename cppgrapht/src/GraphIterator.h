@@ -4,13 +4,28 @@
 //import java.util.*;
 //import org.jgrapht.event.*;
 
+#include <map>
+#include <set>
+#include <stdexcept>
+#include <typeinfo>
+
+#include <iterator>
+
+#include <iostream>
+#include <algorithm>
+#include <functional>
+#include <string>
+#include <vector>
+#include <deque>
+#include <stl>
+
 
 // A graph iterator.
 
-using namespace std;
+//using namespace std;
 
 template <class V, class E>
-class GraphIterator : public Iterator<V>{
+class GraphIterator : Iterator<V>{
 	//JAVACODE: public interface GraphIterator<V, E> extends Iterator<V>
 
 	//~ Methods ----------------------------------------------------------------
@@ -23,7 +38,7 @@ class GraphIterator : public Iterator<V>{
      * otherwise <code>false</code>.
      */
 public:
-    virtual boolean isCrossComponentTraversal() = 0;
+    virtual bool isCrossComponentTraversal() = 0;
     /**
     * Sets a value the <code>reuseEvents</code> flag. If the <code>
     * reuseEvents</code> flag is set to <code>true</code> this class will reuse
@@ -34,7 +49,7 @@ public:
     * @param reuseEvents whether to reuse previously fired event objects
     * instead of creating a new event object for each event.
     */
-    virtual void setReuseEvents(boolean reuseEvents) = 0;
+    virtual void setReuseEvents(bool reuseEvents) = 0;
     /**
     * Tests whether the <code>reuseEvents</code> flag is set. If the flag is
     * set to <code>true</code> this class will reuse previously fired events
