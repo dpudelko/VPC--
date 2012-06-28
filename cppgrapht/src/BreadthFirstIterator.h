@@ -7,7 +7,7 @@
 //#include <string>
 //#include <stdexcept>
 //#include <iostream>
-//#include <EdgeFactory.h>
+#include "CrossComponentIterator.h"
 
 /**
  * A breadth-first iterator for a directed and an undirected graph. For this
@@ -18,7 +18,7 @@
 //using namespace std;
 
 template <class V, class E>
-class BreadthFirstIterator: public CrossComponentIterator<V, E, Object>{ //public class BreadthFirstIterator<V, E> extends CrossComponentIterator<V, E, Object>
+class BreadthFirstIterator : CrossComponentIterator<V, E, Object>{ //public class BreadthFirstIterator<V, E> extends CrossComponentIterator<V, E, Object>
 
     //~ Instance fields --------------------------------------------------------
 private:

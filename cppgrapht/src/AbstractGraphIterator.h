@@ -3,7 +3,7 @@
 
 //import java.util.*;
 //import org.jgrapht.event.*;
-//#include <EdgeFactory.h>
+#include "GraphIterator.h";
 
 /**
  * An empty implementation of a graph iterator to minimize the effort required

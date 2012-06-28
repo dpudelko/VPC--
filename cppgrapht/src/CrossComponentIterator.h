@@ -5,6 +5,7 @@
 //import org.jgrapht.*;
 //import org.jgrapht.event.*;
 #include"AbstractBaseGraph.h"
+#include"AbstractGraphIterator.h"
 
 
 

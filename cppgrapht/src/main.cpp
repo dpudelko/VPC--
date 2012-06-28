@@ -23,6 +23,7 @@
 #include "WeightedGraph.h"
 #include "KruskalMinimumSpanningTree.h"
 #include "UnionFind.h"
+#include"AbstractGraphIterator.h"
 
 //test
 using namespace std;
