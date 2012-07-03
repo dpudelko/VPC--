@@ -45,7 +45,7 @@ public:
     //~ Methods ----------------------------------------------------------------
 protected:
     // @see CrossComponentIterator#isConnectedComponentExhausted()
-    boolean isConnectedComponentExhausted(){
+    bool isConnectedComponentExhausted(){
     	return queue.isEmpty();
     }
 
