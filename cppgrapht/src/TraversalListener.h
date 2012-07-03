@@ -1,48 +1,9 @@
 #ifndef TRAVERSALLISTENER_H_
 #define TRAVERSALLISTENER_H_
 
-/* ==========================================
- * JGraphT : a free Java graph-theory library
- * ==========================================
- *
- * Project Info:  http://jgrapht.sourceforge.net/
- * Project Creator:  Barak Naveh (http://sourceforge.net/users/barak_naveh)
- *
- * (C) Copyright 2003-2008, by Barak Naveh and Contributors.
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 2.1 of the License, or
- * (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
- * License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc.,
- * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
- */
-/* ----------------------
- * TraversalListener.java
- * ----------------------
- * (C) Copyright 2003-2008, by Barak Naveh and Contributors.
- *
- * Original Author:  Barak Naveh
- * Contributor(s):   Christian Hammer
- *
- * $Id: TraversalListener.java 645 2008-09-30 19:44:48Z perfecthash $
- *
- * Changes
- * -------
- * 24-Jul-2003 : Initial revision (BN);
- * 11-Aug-2003 : Adaptation to new event model (BN);
- * 11-Mar-2004 : Made generic (CH);
- *
- */
-package org.jgrapht.event;
+
+//package org.jgrapht.event;
+#import"ConnectedComponentTraversalEvent.h";
 
 /**
  * A listener on graph iterator or on a graph traverser.
@@ -50,7 +11,8 @@ package org.jgrapht.event;
  * @author Barak Naveh
  * @since Jul 19, 2003
  */
-public interface TraversalListener<V, E>
+template <class V, class E>
+class TraversalListener
 {
     //~ Methods ----------------------------------------------------------------
 
@@ -60,8 +22,8 @@ public interface TraversalListener<V, E>
      *
      * @param e the traversal event.
      */
-    public void connectedComponentFinished(
-        ConnectedComponentTraversalEvent e);
+public:
+	virtual void connectedComponentFinished(ConnectedComponentTraversalEvent e) = 0;
 
     /**
      * Called to inform listeners that a traversal of a new connected component
@@ -69,7 +31,7 @@ public interface TraversalListener<V, E>
      *
      * @param e the traversal event.
      */
-    public void connectedComponentStarted(ConnectedComponentTraversalEvent e);
+    virtual void connectedComponentStarted(ConnectedComponentTraversalEvent e) = 0;
 
     /**
      * Called to inform the listener that the specified edge have been visited
@@ -78,7 +40,7 @@ public interface TraversalListener<V, E>
      *
      * @param e the edge traversal event.
      */
-    public void edgeTraversed(EdgeTraversalEvent<V, E> e);
+    virtual void edgeTraversed(EdgeTraversalEvent<V, E> e) = 0;
 
     /**
      * Called to inform the listener that the specified vertex have been visited
@@ -87,7 +49,8 @@ public interface TraversalListener<V, E>
      *
      * @param e the vertex traversal event.
      */
-    public void vertexTraversed(VertexTraversalEvent<V> e);
+
+    virtual void vertexTraversed(VertexTraversalEvent<V> e) = 0;
 
     /**
      * Called to inform the listener that the specified vertex have been
@@ -97,8 +60,8 @@ public interface TraversalListener<V, E>
      *
      * @param e the vertex traversal event.
      */
-    public void vertexFinished(VertexTraversalEvent<V> e);
-}
+   virtual void vertexFinished(VertexTraversalEvent<V> e) = 0;
+};
 
 // End TraversalListener.java
 

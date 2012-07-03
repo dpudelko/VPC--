@@ -59,7 +59,7 @@ public:
     *
     * @return the value of the <code>reuseEvents</code> flag.
     */
-    virtual boolean isReuseEvents() = 0;
+    virtual bool isReuseEvents() = 0;
 
     // Adds the specified traversal listener to this iterator.
     // @param l the traversal listener to be added.

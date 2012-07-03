@@ -18,8 +18,8 @@
 //using namespace std;
 
 template <class V, class E>
-class BreadthFirstIterator : CrossComponentIterator<V, E, Object>{ //public class BreadthFirstIterator<V, E> extends CrossComponentIterator<V, E, Object>
-
+class BreadthFirstIterator : CrossComponentIterator<V, E, Object>{
+							//objekt import java.lang.Object  java.util.EventObject
     //~ Instance fields --------------------------------------------------------
 private:
 	Deque<V> *queue = new ArrayDeque<V>();//private Deque<V> queue = new ArrayDeque<V>();
