@@ -4,7 +4,7 @@
 
 //import org.jgrapht.*;
 //import org.jgrapht.util.*;
-
+#include "CrossComponentIterator.h"
 
 /**
  * A depth-first iterator for a directed and an undirected graph. For this
@@ -17,8 +17,7 @@
  * @since Jul 29, 2003
  */
 template <class V, class E>
-class DepthFirstIterator<V, E> :
-	public CrossComponentIterator<V, E, CrossComponentIterator.VisitColor>
+class DepthFirstIterator : CrossComponentIterator<V, E, CrossComponentIterator.VisitColor>
 {
     //~ Static fields/initializers ---------------------------------------------
 
@@ -74,7 +73,7 @@ public:
      * @see CrossComponentIterator#isConnectedComponentExhausted()
      */
 protected:
-    boolean isConnectedComponentExhausted()
+    bool isConnectedComponentExhausted()
     {
         for (;;) {
             if (stack.isEmpty()) {
@@ -123,7 +122,7 @@ protected:
         // assumption that for typical topologies and traversals,
         // it's likely to be nearer the top of the stack than
         // the bottom of the stack.
-        boolean found = stack.removeLastOccurrence(vertex);
+        bool found = stack.removeLastOccurrence(vertex);
         assert (found);
         stack.addLast(vertex);
     }

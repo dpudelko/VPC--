@@ -21,8 +21,8 @@ class AbstractGraphIterator : GraphIterator<V, E>
 private:
 	List<TraversalListener<V, E>> traversalListeners =
 			new ArrayList<TraversalListener<V, E>>();
-    boolean crossComponentTraversal = true;
-    boolean reuseEvents = false;
+    bool crossComponentTraversal = true;
+    bool reuseEvents = false;
 
     // We keep this cached redundantly with traversalListeners.size()
     // so that subclasses can use it as a fast check to see if
@@ -40,7 +40,7 @@ protected:
      * connected components.
      */
 public:
-    void setCrossComponentTraversal(boolean crossComponentTraversal)
+    void setCrossComponentTraversal(bool crossComponentTraversal)
     {
         this.crossComponentTraversal = crossComponentTraversal;
     }
@@ -52,19 +52,19 @@ public:
      * @return <code>true</code> if traverses across connected components,
      * otherwise <code>false</code>.
      */
-    boolean isCrossComponentTraversal()
+    bool isCrossComponentTraversal()
     {
         return crossComponentTraversal;
     }
 
     //@see GraphIterator#setReuseEvents(boolean)
-    void setReuseEvents(boolean reuseEvents)
+    void setReuseEvents(bool reuseEvents)
     {
         this.reuseEvents = reuseEvents;
     }
 
     //@see GraphIterator#isReuseEvents()
-    boolean isReuseEvents()
+    bool isReuseEvents()
     {
         return reuseEvents;
     }
